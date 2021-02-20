@@ -1,6 +1,7 @@
 import { Engine, ArcRotateCamera, HemisphericLight, MeshBuilder, Mesh, Scene, Vector3 } from "babylonjs";
 
 import { Player } from "./player";
+import { InputHandler } from "./inputHandler";
 
 export class Game {
   scene: Scene;
@@ -21,6 +22,10 @@ export class Game {
     ground.position.y = -0.5;
 
     this.player = new Player(this.scene);
+
+    const inputHandler = new InputHandler();
+
+    this.scene.onKeyboardObservable.add(inputHandler.register());
   }
 
   update() {
