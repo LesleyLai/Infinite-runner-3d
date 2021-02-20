@@ -1,15 +1,12 @@
-import "babylonjs-loaders";
-
 import { Engine, ArcRotateCamera, HemisphericLight, MeshBuilder, Mesh, Scene, Vector3 } from "babylonjs";
 
-import { SampleMaterial } from "./Materials/SampleMaterial";
+import { Player } from "./player";
 
 export class Game {
   scene: Scene;
   camera: ArcRotateCamera;
   light: HemisphericLight;
-  mesh: Mesh;
-  material: SampleMaterial;
+  player: Player;
 
   constructor(view: HTMLCanvasElement, engine: Engine) {
     this.scene = new Scene(engine);
@@ -20,10 +17,10 @@ export class Game {
 
     this.light = new HemisphericLight("light", new Vector3(0, 1, 0), this.scene);
 
-    this.mesh = MeshBuilder.CreateGround("mesh", {}, this.scene);
+    const ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
+    ground.position.y = -0.5;
 
-    this.material = new SampleMaterial("material", this.scene);
-    this.mesh.material = this.material;
+    this.player = new Player(this.scene);
   }
 
   update() {
