@@ -1,4 +1,4 @@
-import { Engine, ArcRotateCamera, HemisphericLight, MeshBuilder, Mesh, Scene, Vector3 } from "babylonjs";
+import { Engine, ArcRotateCamera, HemisphericLight, Scene, Vector3 } from "babylonjs";
 
 import { Player } from "./player";
 import { InputHandler } from "./inputHandler";
