@@ -2,24 +2,25 @@ import { Engine, ArcRotateCamera, HemisphericLight, MeshBuilder, Mesh, Scene, Ve
 
 import { Player } from "./player";
 import { InputHandler } from "./inputHandler";
+import { InfiniteGround } from "./infiniteGround";
 
 export class Game {
   scene: Scene;
   camera: ArcRotateCamera;
   light: HemisphericLight;
   player: Player;
+  ground: InfiniteGround;
 
   constructor(view: HTMLCanvasElement, engine: Engine) {
     this.scene = new Scene(engine);
 
-    this.camera = new ArcRotateCamera("camera", Math.PI / 2, Math.PI / 3.2, 2, Vector3.Zero(), this.scene);
+    this.camera = new ArcRotateCamera("camera", Math.PI / 2, Math.PI / 3.2, 20, Vector3.Zero(), this.scene);
 
     this.camera.attachControl(view);
 
     this.light = new HemisphericLight("light", new Vector3(0, 1, 0), this.scene);
 
-    const ground = BABYLON.MeshBuilder.CreateGround("ground", {width:10, height:10});
-    ground.position.y = -0.5;
+    this.ground = new InfiniteGround(this.scene);
 
     this.player = new Player(this.scene);
 
@@ -29,6 +30,7 @@ export class Game {
   }
 
   update() {
+    this.ground.update();
   }
 
   render() {
