@@ -1,6 +1,6 @@
 import { Color3, Mesh, MeshBuilder, StandardMaterial, Scene } from "babylonjs";
 
-const TILE_SIZE = 10;
+export const TILE_SIZE = 10;
 const TILES_COUNT = 10;
 const SPEED = 0.1;
 

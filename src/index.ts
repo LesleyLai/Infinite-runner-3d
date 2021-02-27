@@ -14,7 +14,7 @@ let previous = window.performance.now();
 let lag = 0;
 engine.runRenderLoop(() => {
   const now = window.performance.now();
-  const delta = now - previous;
+  let delta = now - previous;
 
   // correct any unexpected huge gaps in the delta time
   if (delta > 1000) {

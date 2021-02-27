@@ -31,6 +31,7 @@ export class Game {
 
   update() {
     this.ground.update();
+    this.player.update();
   }
 
   render() {
